@@ -32,5 +32,15 @@ h1 {
 .selection--button {
     width: 200px;
     height: 200px;
-    border: solid #3d494f
+    border: solid #3d494f;
+}
+
+.selection--button:hover {
+    background-color: #59a970;
+}
+
+.results--container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
 }
