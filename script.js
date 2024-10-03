@@ -63,7 +63,7 @@ function computerWins() {
 }
 
 function humanWins() {
-    displayGameResults("Humans Wins!");
+    displayGameResults("Human Wins!");
     computerPortrait.style.backgroundColor = "red";
     computerPortrait.style.transform = `rotate(180deg)`;
 }
