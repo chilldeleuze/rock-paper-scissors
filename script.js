@@ -35,14 +35,16 @@ function displayRoundResults(result) {
 }
 
 /* update score */
+
 function renderScoreDisplay() {
-    /* Calculate Human Score */
     console.log("Human: " + humanScore);
     console.log("Computer: " + computerScore);
-    humanScoreDisplay.textContent = `${"🟢".repeat(5 - computerScore)}${"🔴".repeat(computerScore)}`;
-    computerScoreDisplay.textContent = `${"🟢".repeat(5 - humanScore)}${"🔴".repeat(humanScore)}`;
-    
+
+    humanScoreDisplay.style.background = `linear-gradient(120deg, green, green ${(5 - computerScore) * 20}%, red ${(5 - computerScore) * 20}%, red)`
+    computerScoreDisplay.style.background = `linear-gradient(120deg, red, red ${100 - ((5 - humanScore) * 20)}%, green ${100 - ((5 - humanScore) * 20)}%, green)`
 }
+
+
 
 
 /* main game logics */

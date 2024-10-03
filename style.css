@@ -28,6 +28,7 @@ h1 {
     width: 100%;
     display: flex;
     align-items: center;
+    gap: 20px;
 }
 
 .selection--container {
@@ -68,6 +69,8 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #5a7278;
+    z-index:1
 }
 
 .score--container {
@@ -82,8 +85,17 @@ h1 {
     border-radius: 20px;
     flex-grow: 1;
     padding: 4px;
+    
+}
+
+.human-score {
+    text-align: left;
+    margin-left: -20px;
+    background-color: green;
 }
 
 .computer-score {
-    text-align: right
+    text-align: right;
+    margin-right: -20px;
+    background-color: green;
 }
