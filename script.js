@@ -27,11 +27,16 @@ scissorsButton.addEventListener("click", () => {playRound("scissors")});
 /* get DOM-Elements for results and score */
 
 const resultsParagraph = document.querySelector("p.results")
+const gameResultsParagraph = document.querySelector("p.game-results")
 const humanScoreDisplay = document.querySelector("div.score--bar.human-score");
 const computerScoreDisplay = document.querySelector("div.score--bar.computer-score");
 
 function displayRoundResults(result) {
     resultsParagraph.textContent = result;
+}
+
+function displayGameResults(result) {
+    gameResultsParagraph.textContent = result;
 }
 
 /* update score */
@@ -45,18 +50,52 @@ function renderScoreDisplay() {
 }
 
 
+const humanPortrait = document.querySelector("div.portrait.portrait__human");
+const computerPortrait = document.querySelector("div.portrait.portrait__computer");
 
 
 /* main game logics */
 
+function computerWins() {
+    displayGameResults("Computer Wins!");
+    humanPortrait.style.backgroundColor = "red";
+    humanPortrait.textContent = "💀";
+}
+
+function humanWins() {
+    displayGameResults("Humans Wins!");
+    computerPortrait.style.backgroundColor = "red";
+    computerPortrait.style.transform = `rotate(180deg)`;
+}
+
+function checkForWin() {
+    if (humanScore === 5 || computerScore === 5) {
+        if (humanScore === 5) {
+            humanWins();
+        } else {
+            computerWins();
+        };
+        humanScore = 0;
+        computerScore = 0;
+    }
+    
+}
+
+
+
 
 function playRound(humanChoice) {
+    gameResultsParagraph.textContent = "";
+    computerPortrait.style.backgroundColor = "#5a7278";
+    humanPortrait.style.backgroundColor = "#5a7278";
+    humanPortrait.textContent = "🙎";
+    computerPortrait.style.transform = `rotate(0deg)`;
     let computerChoice = getComputerChoice();
     console.log("Human Choice was: " + humanChoice)
     console.log("Computer Choice was: " + computerChoice)
     
     if (computerChoice === humanChoice) {
-        displayRoundResults(`Match. Both chose ${computerChoice}`);
+        displayRoundResults(`It's a tie. Both chose ${computerChoice}`);
         return;
     }
 
@@ -65,11 +104,13 @@ function playRound(humanChoice) {
             displayRoundResults("Human wins. Paper beats rock");
             humanScore++;
             renderScoreDisplay();
+            checkForWin();
             return;
         } else {
             displayRoundResults("Computer wins. Rock beats scissors");
             computerScore++;
             renderScoreDisplay();
+            checkForWin();
             return;
         }
     }
@@ -79,11 +120,13 @@ function playRound(humanChoice) {
             displayRoundResults("Computer wins. Paper beats rock");
             computerScore++;
             renderScoreDisplay();
+            checkForWin();
             return;
         } else {
             displayRoundResults("Human wins. Scissors beat paper");
             humanScore++;
             renderScoreDisplay();
+            checkForWin();
             return;
         }
     }
@@ -93,11 +136,13 @@ function playRound(humanChoice) {
             displayRoundResults("Computer wins. Scissors beats paper");
             computerScore++;
             renderScoreDisplay();
+            checkForWin();
             return;
         } else {
             displayRoundResults("Human wins. Rock beats scissors");
             humanScore++;
             renderScoreDisplay();
+            checkForWin();
             return;
         }
 
