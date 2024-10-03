@@ -24,19 +24,29 @@ rockButton.addEventListener("click", () => {playRound("rock")});
 paperButton.addEventListener("click", () => {playRound("paper")});
 scissorsButton.addEventListener("click", () => {playRound("scissors")});
 
-/* get DOM-Elements for results */
+/* get DOM-Elements for results and score */
 
 const resultsParagraph = document.querySelector("p.results")
+const humanScoreDisplay = document.querySelector("div.score--bar.human-score");
+const computerScoreDisplay = document.querySelector("div.score--bar.computer-score");
 
 function displayRoundResults(result) {
     resultsParagraph.textContent = result;
 }
 
-
-
+/* update score */
+function renderScoreDisplay() {
+    /* Calculate Human Score */
+    console.log("Human: " + humanScore);
+    console.log("Computer: " + computerScore);
+    humanScoreDisplay.textContent = `${"🟢".repeat(5 - computerScore)}${"🔴".repeat(computerScore)}`;
+    computerScoreDisplay.textContent = `${"🟢".repeat(5 - humanScore)}${"🔴".repeat(humanScore)}`;
+    
+}
 
 
 /* main game logics */
+
 
 function playRound(humanChoice) {
     let computerChoice = getComputerChoice();
@@ -52,10 +62,12 @@ function playRound(humanChoice) {
         if (humanChoice === "paper") {
             displayRoundResults("Human wins. Paper beats rock");
             humanScore++;
+            renderScoreDisplay();
             return;
         } else {
             displayRoundResults("Computer wins. Rock beats scissors");
             computerScore++;
+            renderScoreDisplay();
             return;
         }
     }
@@ -64,10 +76,12 @@ function playRound(humanChoice) {
         if (humanChoice === "rock") {
             displayRoundResults("Computer wins. Paper beats rock");
             computerScore++;
+            renderScoreDisplay();
             return;
         } else {
             displayRoundResults("Human wins. Scissors beat paper");
             humanScore++;
+            renderScoreDisplay();
             return;
         }
     }
@@ -76,10 +90,12 @@ function playRound(humanChoice) {
         if (humanChoice === "paper") {
             displayRoundResults("Computer wins. Scissors beats paper");
             computerScore++;
+            renderScoreDisplay();
             return;
         } else {
             displayRoundResults("Human wins. Rock beats scissors");
             humanScore++;
+            renderScoreDisplay();
             return;
         }
 

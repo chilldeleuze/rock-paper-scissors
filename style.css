@@ -22,10 +22,18 @@ h1 {
     
 }
 
+.hud-container {
+    /* border: solid #3d494f; */
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
 .selection--container {
     display: flex;
-    justify-content: center;
-    gap: 16px;
+    width: 100%;
+    justify-content: space-between;
     padding-top: 20px;
 }
 
@@ -43,4 +51,39 @@ h1 {
     display: flex;
     justify-content: center;
     padding: 20px;
+}
+
+.vs {
+    font-size: 40px;
+    font-weight: 900;
+    font-style: italic;
+}
+
+.portrait {
+    width: 80px;
+    height: 80px;
+    font-size: 60px;
+    border: solid #3d494f;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score--container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.score--bar {
+    border: solid #3d494f;
+    border-radius: 20px;
+    flex-grow: 1;
+    padding: 4px;
+}
+
+.computer-score {
+    text-align: right
 }
